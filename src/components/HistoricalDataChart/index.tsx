@@ -95,13 +95,15 @@ export default function HistoricalDataChart() {
         <Title $varient="medium">HistoricalDataChart</Title>
       </TitleContainer>
       <Container $inner={true}>
-        <DateRangeSelector
-          startDate={state?.startDate}
-          dispatch={dispatch}
-          endDate={state?.endDate}
-          firstDate={state?.firstDate}
-          lastDate={state?.lastDate}
-        />
+        <div style={{ marginBottom: "1rem" }}>
+          <DateRangeSelector
+            startDate={state?.startDate}
+            dispatch={dispatch}
+            endDate={state?.endDate}
+            firstDate={state?.firstDate}
+            lastDate={state?.lastDate}
+          />
+        </div>
         {isLoading ? (
           "Loading..."
         ) : (

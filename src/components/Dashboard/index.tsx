@@ -19,7 +19,9 @@ export default function Dashboard() {
       <Title $mb={3} $varient="large" as={"h1"}>
         COVID-19 Statistics Dashboard
       </Title>
-      <Dropdown title="Select Certain State" />
+      <div style={{ marginBottom: "3rem" }}>
+        <Dropdown title="Select Certain State" />
+      </div>
       <StatisticsContainer>
         <StatisticsDisplay />
         <HistoricalDataChart />

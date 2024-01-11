@@ -72,7 +72,7 @@ function reducerFn<T>(
   }
 }
 
-// const cachedData: { [key: string]: unknown[] } = {};
+const cachedData: { [key: string]: unknown[] } = {};
 
 export const useQuery = <T>({
   queryFn,
@@ -80,28 +80,21 @@ export const useQuery = <T>({
 }: UseQueryProps<T>): UseQueryState<T> & { refetch: typeof runQuery } => {
   const [state, dispatch] = useReducer(reducerFn<T>, initialStateFn<T>());
 
-  // const memoizedQueryFn = useCallback(() => queryFn(), []);
-  // const memoizedQueryKey = useMemo(() => queryKey, [queryKey[1]?.length]);
-
   const runQuery = useCallback(() => {
     const fetchData = async () => {
       dispatch({ type: "FETCHING" });
       try {
-        // if (
-        //   cachedData[queryKey[0]] &&
-        //   cachedData[queryKey[0]].length !== 0
-
-        // ) {
+        // if (cachedData[queryKey[0]]) {
         //   console.log("asasas");
         //   dispatch({
         //     type: "FETCHED",
         //     payload: cachedData[queryKey[0]] as T,
         //   });
         // } else {
-        const data = await queryFn();
-        // cachedData[queryKey[0]] = data as unknown[];
+          const data = await queryFn();
+          cachedData[queryKey[0]] = data as unknown[];
 
-        dispatch({ type: "FETCHED", payload: data });
+          dispatch({ type: "FETCHED", payload: data });
         // }
       } catch (err) {
         dispatch({

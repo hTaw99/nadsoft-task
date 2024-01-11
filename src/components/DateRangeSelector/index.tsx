@@ -1,3 +1,5 @@
+import styles from "./DateRangeSelector.module.css";
+
 import { dateToNumber } from "@/utilsFn/formatDate";
 import { numberToDate } from "@/utilsFn/formatDate";
 import DatePicker from "react-datepicker";
@@ -20,7 +22,7 @@ const DateRangeSelector = ({
   lastDate,
 }: Props) => {
   return (
-    <div style={{ display: "flex", gap: "8px" }}>
+    <div style={{ display: "flex", gap: "8px", alignItems: "center" }}>
       <DatePicker
         selected={numberToDate(startDate)}
         onChange={(date) =>
@@ -30,6 +32,7 @@ const DateRangeSelector = ({
         showDisabledMonthNavigation
         minDate={numberToDate(firstDate)}
         maxDate={numberToDate(endDate)}
+        className={styles.datePicker}
       />
       To
       <DatePicker
@@ -41,6 +44,7 @@ const DateRangeSelector = ({
         showDisabledMonthNavigation
         minDate={numberToDate(startDate)}
         maxDate={numberToDate(lastDate)}
+        className={styles.datePicker}
       />
     </div>
   );

@@ -1,7 +1,7 @@
 import { getStatisticsForMultipleState } from "@/api/statistics";
 import { useAppSelector } from "@/hooks/rtkHooks";
 import { useQuery } from "@/hooks/useQuery";
-import { Placeholder } from "@/styles/PlaceHolder.style";
+import { Placeholder } from "@/styles/Placeholder.style";
 import { TStatistic } from "@/types/statistic";
 import { useMemo } from "react";
 

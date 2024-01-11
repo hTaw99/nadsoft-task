@@ -16,7 +16,7 @@ export const MetricsContainer = styled.ul`
 export const ListContainer = styled.ul`
   padding: 1rem;
   border-radius: 4px;
-  background-color: rgba(0,0,0, 0.05);
+  background-color: rgba(0, 0, 0, 0.05);
   text-transform: capitalize;
 `;
 
