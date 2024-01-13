@@ -14,7 +14,7 @@ export default function StatisticsDisplay() {
 
   const { error, isError, data } = useQuery({
     queryFn: () => getStatistics(selectedState),
-    queryKey: ["statistics", selectedState],
+    queryKey: ["currentStatistics", selectedState],
   });
 
   const metrics = {

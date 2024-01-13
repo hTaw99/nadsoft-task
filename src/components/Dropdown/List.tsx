@@ -20,7 +20,7 @@ const ComponentContainer = styled.li`
   right: 0;
 `;
 
-const ListContainer = styled.li`
+const ListContainer = styled.ul`
   display: flex;
   gap: 8px;
   flex-direction: column;
@@ -34,7 +34,7 @@ const SingleLi = styled.li`
     background-color: rgba(0, 0, 0, 0.1);
   }
 `;
-const SkeletonListContainer = styled.li`
+const SkeletonListContainer = styled.ul`
   display: flex;
   flex-direction: column;
   gap: 4px;

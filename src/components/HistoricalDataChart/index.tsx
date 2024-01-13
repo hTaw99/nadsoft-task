@@ -51,7 +51,6 @@ const reducerFn = (state: InitialState, action: Action) => {
         lastDate: action.payload.lastDate,
       };
     default:
-      console.log(state);
       return state;
   }
 };
@@ -61,11 +60,10 @@ export default function HistoricalDataChart() {
   const selectedState = useAppSelector((state) => state.states.selectedState);
   const { isLoading, data: statistics } = useQuery({
     queryFn: () => getHistoricalStatistics(selectedState),
-    queryKey: ["statistics", selectedState],
+    queryKey: ["historicalStatistics", selectedState],
   });
   useEffect(() => {
     if (statistics) {
-      console.log("asasa");
       dispatch({
         type: "SET_BOUNDRIES",
         payload: {
@@ -80,7 +78,6 @@ export default function HistoricalDataChart() {
     const index = data?.findIndex(
       (singleObj) => singleObj.date === dateToSearch
     );
-    console.log(index);
     return index;
   };
 

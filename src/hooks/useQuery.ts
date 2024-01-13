@@ -72,7 +72,8 @@ function reducerFn<T>(
   }
 }
 
-const cachedData: { [key: string]: unknown[] } = {};
+
+const cache: Map<string, any> = new Map();
 
 export const useQuery = <T>({
   queryFn,
@@ -84,18 +85,18 @@ export const useQuery = <T>({
     const fetchData = async () => {
       dispatch({ type: "FETCHING" });
       try {
-        // if (cachedData[queryKey[0]]) {
-        //   console.log("asasas");
-        //   dispatch({
-        //     type: "FETCHED",
-        //     payload: cachedData[queryKey[0]] as T,
-        //   });
-        // } else {
+        const cacheKey = JSON.stringify(queryKey);
+        const cachedData = cache.get(cacheKey);
+        if (cachedData) {
+          dispatch({
+            type: "FETCHED",
+            payload: cachedData,
+          });
+        } else {
           const data = await queryFn();
-          cachedData[queryKey[0]] = data as unknown[];
-
           dispatch({ type: "FETCHED", payload: data });
-        // }
+          cache.set(cacheKey, data);
+        }
       } catch (err) {
         dispatch({
           type: "FETCHED-ERROR",
